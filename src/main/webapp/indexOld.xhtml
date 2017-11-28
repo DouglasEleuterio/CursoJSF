@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <f:view encoding="UTF-8" contentType="text/html">
+        <h:head>
+            <title>JAva Serve Faces</title>
+        </h:head>
+        <h:body>
+            Hello from Facelets <br/>
+            <h:outputText value="#{mensagemBean.mensagem}"/><br/>
+
+            <h:form>
+                <h:commandLink action="sobre" value="Sobre.. Navegação Estática"/><br/>
+                <h:commandLink action="#{controlePrincipal.sobre()}" value="Sobre...Com navegação Dinamica"/> <br/>
+                <h:commandLink action="#{controlePrincipal.sobreRedirecionado()}" value="Redirecionamento pelo faces-redirect"/>
+            </h:form>
+
+
+            <h:form id="formulario">
+                <h:commandButton value="Gerar Texto" 
+                                 action="#{controleComponentes.geraTexto()}" 
+                                 id="btnGerar" />
+            </h:form>
+
+            <h:outputText value="#{controleComponentes.texto}"/>
+            <h:form>
+                <h:commandLink action="formPessoa" value="Cadastro" /><br/>
+                <h:commandLink action="/tabelas/tabelaRepeat" value="Tabela de pessoas Repeat" /><br/>
+                <h:commandLink action="/tabelas/tabelaSimples" value="Tabela de pessoas Simples" /><br/>
+                <h:commandLink action="/tabelas/tabelaConfiguracoes" value="Tabela Configurações" /> <br/>
+                <h:commandLink action="/tabelas/tabelasComEstilosCSS" value="Tabela Com Estilo CSS" /> <br/>
+                <h:commandLink action="/tabelas/tabelaEstiloLinhasEColunas" value="Estilo de Linhas e colunas"/> <br/>
+                <h:commandLink action="/tabelas/tabelaEditavel" value="Tabela Editavel"/> <br/>
+                
+                <h1>Validações</h1>
+                <h:commandLink action="/Validacao/formValidacao" value="Validações"/> <br/>
+                <h:commandLink action="/Validacao/formUsuario" value="Validações Usuario"/> <br/>
+                <h1>Conversores</h1>
+                <h:commandLink action="/conversores/formPagamento" value="Conversor Pagamento "/> <br/>
+                <h:commandLink action="/conversores/formConversores" value="Conversor Customizado"/> <br/>
+                
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+

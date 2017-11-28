@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <f:view encoding="UTF-8" contentType="text/html">
+        <h:head>
+            <title>JAva Serve Faces</title>
+        </h:head>
+        <h:body>
+            <h:form id="formulario" prependId="false">
+                <h:commandButton value="Gerar Texto" 
+                                 action="#{controleComponentes.geraTexto()}" id="btnGerar" />
+                <h:commandLink action="#{controleComponentes.geraTexto()}">
+                    <h:graphicImage library="images" name="jsf-logo.png" />
+                </h:commandLink>
+                
+            </h:form>
+            <h:outputText value="#{controleComponentes.texto}" />
+            <h:outputFormat value="Eu moro em {0}, {1}" ><br/>
+                <f:param value="Goiania" />
+                <f:param value="Goiás" />
+            </h:outputFormat>
+            <br/>
+            
+            <h:graphicImage library="images" name="jsf-logo.png" />
+            <h:graphicImage url="/resources/images/jsf-logo.png" />
+            <h:graphicImage value="#{resource['images:jsf-logo.png']}" />
+        </h:body>
+    </f:view>
+</html>
+

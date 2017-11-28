@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:devmedia="http://xmlns.jcp.org/jsf/composite/devmedia">
+
+
+        <devmedia:linkImagem acao="#{controlePrincipal.home()}" biblioteca="images" imagem="home.png" /> 
+        <h:form>
+            <h:panelGrid columns="1">
+                <!--            <h:commandLink value="Home" action="/index" />-->
+                <h:commandLink value="#{msgs['menu.tabela_editavel']}" action="/tabelas/tabelaEditavel" />
+                <h:commandLink value="#{msgs['menu.tabelas_estilos']}" action="/tabelas/tabelasComEstilosCSS" />
+                <h:commandLink value="#{msgs['menu.componentes']}" action="/meusComponentes" />
+                <h:commandLink value="#{msgs['menu.crud_ajax']}" action="#{controleCRUDAjax.listar()}" />
+                <h:commandLink value="Portugues" action="#{controleLocale.portuguesLocal()}" />
+                <h:commandLink value="Ingles" action="#{controleLocale.englishLocal()}" />
+            </h:panelGrid>
+        </h:form>
+</html>
+

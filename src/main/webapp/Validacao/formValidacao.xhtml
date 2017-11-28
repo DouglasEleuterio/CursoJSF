@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Validação Padrão JSF 2</title>
+    </h:head>
+
+    <h:body>
+        <!--PreprenId, faz com que os Ids dos componetes fique igual ao id do form-->
+        <h:form id="formulario" prependId="false">
+            <h:messages/>
+            <h:panelGrid columns="3">
+                <h:outputLabel value="Nome" for="nome" />
+                <h:inputText value="#{controleValidacao.nome}" id="nome" >
+                </h:inputText>
+                <h:message for="nome" style="color: brown" />
+
+                <h:outputLabel value="Telefone" for="telefone" />
+                <h:inputText value="#{controleValidacao.telefone}" id="telefone">
+                </h:inputText>
+                <h:message for="telefone" style="color: brown" />
+
+                <h:outputLabel value="E-mail" for="email" />
+                <h:inputText value="#{controleValidacao.email}" id="email" >
+                </h:inputText>
+                <h:message for="email" style="color: brown" />
+
+                <h:outputLabel value="Idade" for="idade" />
+                <h:inputText value="#{controleValidacao.idade}" id="idade" >
+                </h:inputText>
+                <h:message for="idade" style="color: brown" />
+
+                <h:outputLabel value="Nota" for="nota" />
+                <h:inputText value="#{controleValidacao.nota}" id="nota" >
+                </h:inputText>
+                <h:message for="nota" style="color: brown" />
+
+                <h:commandButton action="#{controleValidacao.processaDados()}" value="Enviar"/>
+            </h:panelGrid>
+
+        </h:form>
+    </h:body>
+</html>
+

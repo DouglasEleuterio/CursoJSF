@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Formulário de Pagamentos</title>
+    </h:head>
+
+    <h:body>
+        <!--Convertendo dados para o Envio para o Servidor-->
+        <h:form id="formularioPagamento" prependId="false" >
+            <h:panelGrid columns="3">
+
+                <h:outputLabel value="Valor" for="valor" />
+
+                <h:inputText value="#{controlePagamento.pagamento.valor}" size="15" id="valor" required="true" requiredMessage="Informe o valor " >
+                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+                </h:inputText>
+                <h:messages for="valor" />
+
+                <h:outputLabel value="Data" for="data" />
+                <h:inputText value="#{controlePagamento.pagamento.data}" id="data" size="10" required="true" requiredMessage="Informe a data de pagamento" >
+                    <f:convertDateTime parent="dd/MM/yyyy" />
+                </h:inputText>
+                <h:messages for="data" />
+
+                <f:facet name="footer">
+                    <h:commandButton action="#{controlePagamento.adicionarPagamento()}" value="Efetuar Pagamento" />
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
+
+        <!--Convertendo dados recebidos pelo servidor-->
+        <h:dataTable value="#{controlePagamento.lista}" var="obj">
+            <h:column>
+                <f:facet name="header">Valor</f:facet>
+                <h:outputText value="#{obj.valor}" >
+                    <f:convertNumber pattern="R$ ###,###,##0.00"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Data Pagamento</f:facet>
+                <h:outputText value="#{obj.data}" >
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
+

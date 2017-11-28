@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Edição de pessoas</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <!--Recuperando os dados enviados da classe Bean para o Faces-->
+            <h:messages/>
+            
+            <!--Componente para agrupar componentes-->
+            <!--Rendered tem função de renderizar componentes, recebe um Boolean ou pode ser setado de forma dinamica de acordo com uma condição no contexto do Bean-->
+            <h:panelGroup rendered="#{controlePessoa.opcaoSelecionada == false}" >
+                Selecionao tipo de Pessoa
+                <!--O Radio mostra as opções de Seleção, por padrão ele não traz nada selecionado, 
+                se o valor selecionado seja Pessoa fisica, ele setará como true.-->   
+                <!--Juntamente ao Radio, existe um listener que envia o valor para o Bean.-->
+                <h:selectOneRadio value="#{controlePessoa.pessoaFisica}" layout="lineDirection"
+                                  onchange="submit()" valueChangeListener="#{controlePessoa.tipoChange}">
+                    <f:selectItem itemLabel="Pessoa Fisica" itemValue="true" />
+                    <f:selectItem itemLabel="Pessoa Juridica" itemValue="false" />
+                </h:selectOneRadio>          
+            </h:panelGroup>
+            
+            <h:panelGroup rendered="#{controlePessoa.opcaoSelecionada == true}">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="ID" />
+                    <h:inputText value="#{controlePessoa.id}" />
+                    
+                    <!-- Logica para exibição De pessoa fisica ou Juridica -->
+                    <h:outputLabel value="Nome" rendered="#{controlePessoa.pessoaFisica == true}"/>
+                    <h:outputLabel value="Razão Social" rendered="#{controlePessoa.pessoaFisica == false}"/>
+                    <!--Usando apenas o nome, posso preencher o mesmo campo tanto para Pessoa Juridica quanto Pessoa Fisica-->
+                    <h:inputText value="#{controlePessoa.nome}" size="40" />
+                    <!--Logica para exibição de CPF-->
+                    <h:outputLabel value="CPF" rendered="#{controlePessoa.pessoaFisica == true}"/>
+                    <h:inputText value="#{controlePessoa.cpf}" size="11" rendered="#{controlePessoa.pessoaFisica == true}"/>
+                   <!--Logica para exibição do CNPJ-->
+                    <h:outputLabel value="CNPJ" rendered="#{controlePessoa.pessoaFisica == false}"/>
+                    <h:inputText value="#{controlePessoa.cnpj}" size="14" rendered="#{controlePessoa.pessoaFisica == false}"/>
+                </h:panelGrid>
+            </h:panelGroup>
+            <h:commandButton action="#{controlePessoa.exibirDados()}" value="Enviar" />
+        </h:form>
+
+    </h:body>
+
+</html>
+
